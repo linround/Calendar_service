@@ -28,7 +28,8 @@ func checkError(err error) {
 func init() {
 	//createData()
 	//readData()
-	updateData()
+	//updateData()
+	deleteData()
 }
 
 func createData() {
@@ -140,4 +141,30 @@ func updateData() {
 	rowCount, err := rows.RowsAffected()
 	fmt.Printf("更新 %d 行数据.\n", rowCount)
 	fmt.Println("更新完成.")
+}
+
+func deleteData() {
+
+	const (
+		host     = "localhost"
+		database = "calendar"
+		user     = "root"
+		password = "123456"
+	)
+	// 初始化连接
+	var connectionString = fmt.Sprintf("%s:%s@tcp(%s:3306)/%s?allowNativePasswords=true", user, password, host, database)
+	//开始建立连接
+	db, err := sql.Open("mysql", connectionString)
+	checkError(err)
+	defer db.Close()
+
+	err = db.Ping()
+	checkError(err)
+	fmt.Println("连接创建成功")
+	// 删除name等于 orange的这一行的数据
+	rows, err := db.Exec("DELETE FROM inventory WHERE name = ?", "orange")
+	checkError(err)
+	rowCount, err := rows.RowsAffected()
+	fmt.Printf("删除 %d 行数据.\n", rowCount)
+	fmt.Println("删除完成")
 }
