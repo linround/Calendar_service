@@ -3,14 +3,17 @@ package main
 import (
 	"calendar_service/console"
 	"calendar_service/pkg"
+	user2 "calendar_service/user"
 	"database/sql"
 	"fmt"
 	_ "github.com/go-sql-driver/mysql"
+	"gorm.io/driver/mysql"
+	"gorm.io/gorm"
 )
 
 const (
 	host     = "localhost"
-	database = "calendar"
+	database = "sql_test"
 	user     = "root"
 	password = "123456"
 )
@@ -27,10 +30,22 @@ func checkError(err error) {
 	}
 }
 func init() {
+	db := linkDB()
+	user2.CreateUser(db)
+
 	//createData()
 	//readData()
 	//updateData()
-	deleteData()
+	//deleteData()
+}
+
+func linkDB() *gorm.DB {
+	dsn := fmt.Sprintf("%s:%s@tcp(%s:3306)/%s?charset=utf8mb4&parseTime=True&loc=Local", user, password, host, database)
+	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
+	if err != nil {
+		fmt.Printf("连接出现问题")
+	}
+	return db
 }
 
 func createData() {
