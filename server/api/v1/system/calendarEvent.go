@@ -17,5 +17,10 @@ func (event *CalendarEventApi) CreateEvent(ctx *gin.Context) {
 		response.FailWithMessage(err.Error(), ctx)
 		return
 	}
-
+	err = calendarEventService.CreateEvent(calendarEvent)
+	if err != nil {
+		response.FailWithMessage("创建失败", ctx)
+		return
+	}
+	response.OkWithMessage("创建成功", ctx)
 }

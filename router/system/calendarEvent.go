@@ -9,7 +9,7 @@ type CalendarEventRouter struct {
 }
 
 func (s *CalendarEventRouter) InitCalendarEventRouter(Router *gin.RouterGroup) {
-	calendarEventRouter := Router.Group("CalendarEvent")
+	calendarEventRouter := Router.Group("calendarEvent")
 	CalendarEventApi := v1.ApiGroupApp.CalendarEventApi
 	calendarEventRouter.POST("createEvent", CalendarEventApi.CreateEvent)
 }

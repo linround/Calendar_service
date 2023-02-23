@@ -17,7 +17,9 @@ func GormMysql() *gorm.DB {
 	//定义数据胡信息
 	dsn := fmt.Sprintf("%s:%s@tcp(%s:3306)/%s?charset=utf8mb4&parseTime=True&loc=Local", user, password, host, database)
 	mysqlConfig := mysql.Config{
-		DSN: dsn,
+		DSN:                       dsn,
+		DefaultStringSize:         191,
+		SkipInitializeWithVersion: false,
 	}
 	//	建立数据库连接
 	db, err := gorm.Open(mysql.New(mysqlConfig), &gorm.Config{})
