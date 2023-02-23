@@ -1,6 +1,7 @@
 package main
 
 import (
+	"calendar_service/core"
 	"calendar_service/global"
 	"calendar_service/initialize"
 )
@@ -16,4 +17,5 @@ func main() {
 		//	关闭数据库连接
 		defer db.Close()
 	}
+	core.RunServer()
 }

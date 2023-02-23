@@ -4,7 +4,7 @@ import (
 	"calendar_service/global"
 )
 
-type SysCalendarEvent struct {
+type CalendarEvent struct {
 	global.CalendarEventModel        // 包含ID、创建时间、更新时间、删除时间
 	Name                      string // 名称
 	Start                     uint64 // 开始时间

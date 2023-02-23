@@ -17,7 +17,7 @@ func RegisterTables(db *gorm.DB) {
 	// db.AutoMigrate
 	// 会创建表、缺失的外键、约束、列和索引
 	// 出于保护数据的目的，其不会删除未使用的列
-	err := db.AutoMigrate(system.SysCalendarEvent{})
+	err := db.AutoMigrate(system.CalendarEvent{})
 	if err != nil {
 		fmt.Println("表注册失败")
 		os.Exit(0)
