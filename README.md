@@ -12,4 +12,4 @@
 # 部署
 - [nginx](https://zhuanlan.zhihu.com/p/378409850)
 - [mysql](https://www.runoob.com/mysql/mysql-install.html)
-- go
+  - [初次远程连接数据库问题解决](https://makolyte.com/error-host-is-not-allowed-to-connect-to-this-mysql-server/)

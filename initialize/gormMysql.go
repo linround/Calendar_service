@@ -7,7 +7,10 @@ import (
 )
 
 const (
+	// mysql的两个用户 root和linyuan
+	// mysql的登录密码均为 linyuan333
 	publicMysqlUser     = "root"
+	publicMysqlLinyuan  = "linyuan"
 	publicMysqlPassword = "linyuan333"
 	publicIp            = "121.199.1.247"
 	publicPassword      = "Linyuan333"
