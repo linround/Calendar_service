@@ -7,10 +7,12 @@ import (
 )
 
 const (
-	host     = "localhost"
-	database = "calendar"
-	user     = "root"
-	password = "123456"
+	publicIp       = "121.199.1.247"
+	publicPassword = "Linyuan333"
+	host           = "localhost"
+	database       = "calendar"
+	user           = "root"
+	password       = "123456"
 )
 
 func GormMysql() *gorm.DB {
