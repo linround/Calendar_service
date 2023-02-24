@@ -14,4 +14,5 @@ func (s *CalendarEventRouter) InitCalendarEventRouter(Router *gin.RouterGroup) {
 	calendarEventRouter.POST("create", CalendarEventApi.CreateEvent)
 	calendarEventRouter.POST("list", CalendarEventApi.GetEventList)
 	calendarEventRouter.POST("update", CalendarEventApi.UpdateEvent)
+	calendarEventRouter.POST("delete", CalendarEventApi.DeleteEvent)
 }

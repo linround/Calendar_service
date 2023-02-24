@@ -57,3 +57,18 @@ func (event *CalendarEventApi) UpdateEvent(ctx *gin.Context) {
 	}
 	response.OkWithMessage("更新成功", ctx)
 }
+func (event *CalendarEventApi) DeleteEvent(ctx *gin.Context) {
+	var params system.ApiCalendarEvent
+	err := ctx.ShouldBindJSON(&params)
+	if err != nil {
+		response.FailWithMessage(err.Error(), ctx)
+		return
+	}
+	err = calendarEventService.DeleteEvent(params)
+	if err != nil {
+		fmt.Println("事件删除失败")
+		response.FailWithMessage("删除失败", ctx)
+		return
+	}
+	response.OkWithMessage("删除成功", ctx)
+}

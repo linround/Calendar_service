@@ -44,3 +44,13 @@ func (calendarService *CalendarEventService) UpdateEvent(event system.ApiCalenda
 	err = global.CalendarDB.Save(&event).Error
 	return
 }
+
+func (calendarService *CalendarEventService) DeleteEvent(event system.ApiCalendarEvent) (err error) {
+	// 模型包含了一个 gorm.deletedAt 字段（gorm.Model 已经包含了该字段)，它将自动获得软删除的能力
+	// 使用软删除的方式
+	err = global.CalendarDB.Delete(&system.CalendarEvent{}, event.ID).Error
+	if err != nil {
+		return
+	}
+	return
+}
