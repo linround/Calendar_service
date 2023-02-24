@@ -21,6 +21,18 @@ func (calendarService *CalendarEventService) GetEventList(params request.SearchE
 	return
 }
 
-func (calendarService *CalendarEventService) UpdateEvent(event system.CalendarEvent) {
-
+func (calendarService *CalendarEventService) UpdateEvent(event system.ApiCalendarEvent) (err error) {
+	var oldEvent system.ApiCalendarEvent
+	err = global.CalendarDB.Model(&system.CalendarEvent{}).Where("id = ?", event.ID).First(&oldEvent).Error
+	if err != nil {
+		return
+	}
+	err = global.CalendarDB.Model(&system.CalendarEvent{}).Where("id = ?", event.ID).Updates(map[string]interface{}{
+		"name": event.Name,
+	}).Error
+	if err != nil {
+		return
+	}
+	err = global.CalendarDB.Save(&event).Error
+	return
 }

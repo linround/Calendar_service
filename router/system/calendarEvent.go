@@ -13,4 +13,5 @@ func (s *CalendarEventRouter) InitCalendarEventRouter(Router *gin.RouterGroup) {
 	CalendarEventApi := v1.ApiGroupApp.CalendarEventApi
 	calendarEventRouter.POST("create", CalendarEventApi.CreateEvent)
 	calendarEventRouter.POST("list", CalendarEventApi.GetEventList)
+	calendarEventRouter.POST("update", CalendarEventApi.UpdateEvent)
 }
