@@ -9,3 +9,7 @@
 
 # 前端相关
 - vite工具使用go语言编写的
+# 部署
+- [nginx](https://zhuanlan.zhihu.com/p/378409850)
+- [mysql](https://www.runoob.com/mysql/mysql-install.html)
+- go

@@ -7,13 +7,15 @@ import (
 )
 
 const (
-	publicIp       = "121.199.1.247"
-	publicPassword = "Linyuan333"
-	nginxPath      = "usr/local/nginx/html"
-	host           = "localhost"
-	database       = "calendar"
-	user           = "root"
-	password       = "123456"
+	publicMysqlUser     = "root"
+	publicMysqlPassword = "linyuan333"
+	publicIp            = "121.199.1.247"
+	publicPassword      = "Linyuan333"
+	nginxPath           = "usr/local/nginx/html"
+	host                = "localhost"
+	database            = "calendar"
+	user                = "root"
+	password            = "123456"
 )
 
 func GormMysql() *gorm.DB {
