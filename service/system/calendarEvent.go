@@ -28,7 +28,15 @@ func (calendarService *CalendarEventService) UpdateEvent(event system.ApiCalenda
 		return
 	}
 	err = global.CalendarDB.Model(&system.CalendarEvent{}).Where("id = ?", event.ID).Updates(map[string]interface{}{
-		"name": event.Name,
+		"name":      event.Name,
+		"start":     event.Start,
+		"end":       event.End,
+		"color":     event.Color,
+		"all_day":   event.AllDay,
+		"author":    event.Author,
+		"location":  event.Location,
+		"personnel": event.Personnel,
+		"timed":     event.Timed,
 	}).Error
 	if err != nil {
 		return

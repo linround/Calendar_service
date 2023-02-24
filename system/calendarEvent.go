@@ -14,7 +14,7 @@ type ApiCalendarEvent struct {
 	Start     uint64 `json:"start"`     // 开始时间
 	End       uint64 `json:"end"`       // 结束时间
 	Color     string `json:"color"`     // 颜色
-	AllDay    bool   `json:"all_day"`   // 全天
+	AllDay    bool   `json:"allDay"`    // 全天
 	Author    string `json:"author"`    // 创建者
 	Location  string `json:"location"`  // 地点
 	Personnel string `json:"personnel"` // 人员
