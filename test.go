@@ -113,7 +113,7 @@ func readData() {
 		name     string
 		quantity int
 	)
-	// 读取表哥中的数据
+	// 读取表中的数据
 	rows, err := db.Query("SELECT id, name, quantity from inventory;")
 	checkError(err)
 	defer rows.Close()
