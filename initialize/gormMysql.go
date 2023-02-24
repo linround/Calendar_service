@@ -9,6 +9,7 @@ import (
 const (
 	publicIp       = "121.199.1.247"
 	publicPassword = "Linyuan333"
+	nginxPath      = "usr/local/nginx/html"
 	host           = "localhost"
 	database       = "calendar"
 	user           = "root"
