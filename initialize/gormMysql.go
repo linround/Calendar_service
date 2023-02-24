@@ -7,13 +7,11 @@ import (
 )
 
 const (
-	// mysql的两个用户 root和linyuan
-	// mysql的登录密码均为 linyuan333
-	publicMysqlUser     = "root"
-	publicMysqlLinyuan  = "linyuan"
-	publicMysqlPassword = "linyuan333"
-	publicIp            = "121.199.1.247"
-	publicPassword      = "Linyuan333"
+	// mysql的用户 root
+	// mysql的登录密码为 linyuan333
+	publicMysqlPassword = "linyuan333" // 数据库密码
+	publicHost          = "121.199.1.247"
+	publicPassword      = "Linyuan333" // XShell XFtp 连接密码
 	nginxPath           = "usr/local/nginx/html"
 	host                = "localhost"
 	database            = "calendar"
@@ -23,7 +21,7 @@ const (
 
 func GormMysql() *gorm.DB {
 	//定义数据胡信息
-	dsn := fmt.Sprintf("%s:%s@tcp(%s:3306)/%s?charset=utf8mb4&parseTime=True&loc=Local", user, password, host, database)
+	dsn := fmt.Sprintf("%s:%s@tcp(%s:3306)/%s?charset=utf8mb4&parseTime=True&loc=Local", user, publicMysqlPassword, publicHost, database)
 	mysqlConfig := mysql.Config{
 		DSN:                       dsn,
 		DefaultStringSize:         191,

@@ -13,3 +13,4 @@
 - [nginx](https://zhuanlan.zhihu.com/p/378409850)
 - [mysql](https://www.runoob.com/mysql/mysql-install.html)
   - [初次远程连接数据库问题解决](https://makolyte.com/error-host-is-not-allowed-to-connect-to-this-mysql-server/)
+  - [卸载mysql](https://www.jianshu.com/p/ef58fb333cd6)
