@@ -23,6 +23,7 @@ func (calendarService *CalendarEventService) GetEventList(params request.SearchE
 
 func (calendarService *CalendarEventService) UpdateEvent(event system.ApiCalendarEvent) (err error) {
 	var oldEvent system.ApiCalendarEvent
+	// 记录用户更新之前的旧数据
 	err = global.CalendarDB.Model(&system.CalendarEvent{}).Where("id = ?", event.ID).First(&oldEvent).Error
 	if err != nil {
 		return
