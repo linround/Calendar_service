@@ -1,7 +1,6 @@
 package request
 
 type SearchEventListParams struct {
-	StartTime uint64
-	EndTime   uint64
-	Author    string
+	Start uint64 `json:"start"`
+	End   uint64 `json:"end"`
 }
