@@ -21,7 +21,7 @@ const (
 
 func GormMysql() *gorm.DB {
 	//定义数据胡信息
-	dsn := fmt.Sprintf("%s:%s@tcp(%s:3306)/%s?charset=utf8mb4&parseTime=True&loc=Local", user, publicMysqlPassword, publicHost, database)
+	dsn := fmt.Sprintf("%s:%s@tcp(%s:3306)/%s?charset=utf8mb4,utf8&parseTime=True&loc=Local", user, publicMysqlPassword, publicHost, database)
 	mysqlConfig := mysql.Config{
 		DSN:                       dsn,
 		DefaultStringSize:         191,
