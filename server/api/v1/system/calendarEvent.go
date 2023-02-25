@@ -39,7 +39,7 @@ func (event *CalendarEventApi) GetEventList(ctx *gin.Context) {
 		response.FailWithMessage("获取失败", ctx)
 		return
 	}
-	response.OkWithDetailed(list, "获取成功", ctx)
+	response.OkWithDetailed(response.ListResult{List: list}, "获取成功", ctx)
 
 }
 func (event *CalendarEventApi) UpdateEvent(ctx *gin.Context) {
