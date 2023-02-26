@@ -13,6 +13,7 @@ const (
 	publicHost          = "121.199.1.247"
 	publicPassword      = "Linyuan333" // XShell XFtp 连接密码
 	nginxPath           = "usr/local/nginx/html"
+	servicePath         = "/calendar_service"
 	host                = "localhost"
 	database            = "calendar"
 	user                = "root"
