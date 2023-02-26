@@ -42,7 +42,6 @@ func (calendarService *CalendarEventService) UpdateEvent(event system.ApiCalenda
 	if err != nil {
 		return
 	}
-	err = global.CalendarDB.Save(&event).Error
 	return
 }
 
