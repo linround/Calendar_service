@@ -20,10 +20,10 @@ func RegisterTables(db *gorm.DB) {
 
 	// 这里处理中文编码的问题
 	err := db.Set("gorm:table_options", "ENGINE=InnoDB DEFAULT CHARSET=utf8").AutoMigrate(
+		// 用户表
+		system.CalendarUser{},
 		// 记录日历事件表
 		system.CalendarEvent{},
-		// 记录用户编辑事件的时候的数据
-		system.ApiCalendarEvent{},
 	)
 	if err != nil {
 		fmt.Println("表注册失败")
