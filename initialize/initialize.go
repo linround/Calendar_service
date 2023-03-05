@@ -24,6 +24,8 @@ func RegisterTables(db *gorm.DB) {
 		system.CalendarUser{},
 		// 记录日历事件表
 		system.CalendarEvent{},
+		//	日历组表
+		system.CalendarGroup{},
 	)
 	if err != nil {
 		fmt.Println("表注册失败")

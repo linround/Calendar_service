@@ -10,7 +10,7 @@ import "calendar_service/global"
 
 type CalendarUser struct {
 	global.CalendarEventModel
-	UserID    uint64 `json:"userId" gorm:"primarykey"`
+	ID        uint   `json:"id" gorm:"primarykey"` // 主键
 	NickName  string `json:"nickName"`
 	HeaderUrl string `json:"headerUrl"`
 }
