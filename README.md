@@ -15,3 +15,7 @@
   - [初次远程连接数据库问题解决](https://makolyte.com/error-host-is-not-allowed-to-connect-to-this-mysql-server/)
   - [卸载mysql](https://www.jianshu.com/p/ef58fb333cd6)
 - [docker的安装](https://www.runoob.com/docker/centos-docker-install.html)
+
+
+## tips
+- 字段特有的属性命名 尽量特殊命名 不抽象化
