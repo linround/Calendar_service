@@ -9,15 +9,15 @@ type CalendarEvent struct {
 	ApiCalendarEvent
 }
 type ApiCalendarEvent struct {
-	ID        uint   `json:"id" gorm:"primarykey"` // 主键
-	Name      string `json:"name"`                 // 名称
-	Start     uint64 `json:"start"`                // 开始时间
-	End       uint64 `json:"end"`                  // 结束时间
-	Color     string `json:"color"`                // 颜色
-	AllDay    bool   `json:"allDay"`               // 全天
-	Author    string `json:"author"`               // 创建者
-	Location  string `json:"location"`             // 地点
-	Personnel string `json:"personnel"`            // 人员
-	Timed     bool   `json:"timed"`                // 显示该事件
-	GroupId   uint64 `json:"groupId"`              // 属于对应的日历组
+	EventID        uint   `json:"eventId" gorm:"primarykey"` // 主键
+	EventName      string `json:"eventName"`                 // 名称
+	Start          uint64 `json:"start"`                     // 开始时间
+	End            uint64 `json:"end"`                       // 结束时间
+	EventColor     string `json:"eventColor"`                // 颜色
+	AllDay         bool   `json:"allDay"`                    // 全天
+	UserName       string `json:"userName"`                  // 创建者
+	EventLocation  string `json:"eventLocation"`             // 地点
+	EventPersonnel string `json:"eventPersonnel"`            // 人员
+	EventTimed     bool   `json:"eventTimed"`                // 显示该事件
+	GroupId        uint64 `json:"groupId"`                   // 属于对应的日历组
 }

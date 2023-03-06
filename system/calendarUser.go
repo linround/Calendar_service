@@ -10,7 +10,10 @@ import "calendar_service/global"
 
 type CalendarUser struct {
 	global.CalendarEventModel
-	ID        uint   `json:"id" gorm:"primarykey"` // 主键
-	NickName  string `json:"nickName"`
-	HeaderUrl string `json:"headerUrl"`
+	ApiCalendarUser
+}
+type ApiCalendarUser struct {
+	UserID    uint64 `json:"userId" gorm:"primarykey"` // 主键
+	UserName  string `json:"nickName"`                 // 用户名
+	HeaderUrl string `json:"headerUrl"`                // 头像地址
 }
