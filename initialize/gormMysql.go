@@ -23,8 +23,8 @@ const (
 func GormMysql() *gorm.DB {
 	//定义数据胡信息
 
-	dsn := fmt.Sprintf("%s:%s@tcp(%s:3306)/%s?charset=utf8mb4,utf8&parseTime=True&loc=Local", user, password, host, database) // 本地dsn
-	//dsn := fmt.Sprintf("%s:%s@tcp(%s:3306)/%s?charset=utf8mb4,utf8&parseTime=True&loc=Local", user, publicMysqlPassword, publicHost, database) // 云服务器dsn
+	//dsn := fmt.Sprintf("%s:%s@tcp(%s:3306)/%s?charset=utf8mb4,utf8&parseTime=True&loc=Local", user, password, host, database) // 本地dsn
+	dsn := fmt.Sprintf("%s:%s@tcp(%s:3306)/%s?charset=utf8mb4,utf8&parseTime=True&loc=Local", user, publicMysqlPassword, publicHost, database) // 云服务器dsn
 	mysqlConfig := mysql.Config{
 		DSN:                       dsn,
 		DefaultStringSize:         191,

@@ -15,5 +15,6 @@ type CalendarUser struct {
 type ApiCalendarUser struct {
 	UserID    uint64 `json:"userId" gorm:"primarykey"` // 主键
 	UserName  string `json:"nickName"`                 // 用户名
-	HeaderUrl string `json:"headerUrl"`                // 头像地址
+	AvatarUrl string `json:"avatarUrl"`                // 头像地址
+	UserEmail string `json:"userEmail"`                // 用户邮箱
 }

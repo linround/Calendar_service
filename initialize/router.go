@@ -15,11 +15,13 @@ func Routers() *gin.Engine {
 	// 小写无法被外部访问
 	calendarEventRouter := router.GroupApp.CalendarEventRouter
 	calendarGroupRouter := router.GroupApp.CalendarGroupRouter
+	calendarUserRouter := router.GroupApp.CalendarUserRouter
 	// 配置跨域请求
 	Router.Use(middleware.Cors())
 
 	PrivateGroup := Router.Group("")
 	calendarEventRouter.InitCalendarEventRouter(PrivateGroup)
 	calendarGroupRouter.InitCalendarGroupRouter(PrivateGroup)
+	calendarUserRouter.InitCalendarUserRouter(PrivateGroup)
 	return Router
 }
