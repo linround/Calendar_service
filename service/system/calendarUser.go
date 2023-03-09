@@ -4,12 +4,20 @@ import (
 	"calendar_service/global"
 	"calendar_service/model/system/request"
 	"calendar_service/system"
+	"errors"
+	"gorm.io/gorm"
 )
 
 type CalendarUserService struct {
 }
 
 func (calendarService *CalendarUserService) RegisterUser(user system.CalendarUser) (err error) {
+	//查重
+	var preUser system.CalendarUser
+
+	if !errors.Is(global.CalendarDB.Model(&system.CalendarUser{}).Where("user_account = ?", user.UserAccount).First(&preUser).Error, gorm.ErrRecordNotFound) {
+		return errors.New("用户已存在")
+	}
 	return global.CalendarDB.Create(&user).Error
 
 }

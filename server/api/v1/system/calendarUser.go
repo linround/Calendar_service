@@ -19,7 +19,7 @@ func (api *CalendarUserApi) RegisterUser(ctx *gin.Context) {
 	}
 	err = calendarUserService.RegisterUser(calendarUser)
 	if err != nil {
-		response.FailWithMessage("创建失败", ctx)
+		response.FailWithMessage(err.Error(), ctx)
 		return
 	}
 	response.OkWithMessage("创建成功", ctx)
