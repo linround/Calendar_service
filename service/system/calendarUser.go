@@ -9,7 +9,7 @@ import (
 type CalendarUserService struct {
 }
 
-func (calendarService *CalendarUserService) CreateUser(user system.CalendarUser) (err error) {
+func (calendarService *CalendarUserService) RegisterUser(user system.CalendarUser) (err error) {
 	return global.CalendarDB.Create(&user).Error
 
 }

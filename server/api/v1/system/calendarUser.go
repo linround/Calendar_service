@@ -10,14 +10,14 @@ import (
 type CalendarUserApi struct {
 }
 
-func (api *CalendarUserApi) CreateUser(ctx *gin.Context) {
+func (api *CalendarUserApi) RegisterUser(ctx *gin.Context) {
 	var calendarUser system.CalendarUser
 	err := ctx.ShouldBindJSON(&calendarUser)
 	if err != nil {
 		response.FailWithMessage(err.Error(), ctx)
 		return
 	}
-	err = calendarUserService.CreateUser(calendarUser)
+	err = calendarUserService.RegisterUser(calendarUser)
 	if err != nil {
 		response.FailWithMessage("创建失败", ctx)
 		return

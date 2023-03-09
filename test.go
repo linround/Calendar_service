@@ -2,8 +2,6 @@ package main
 
 import (
 	"calendar_service/console"
-	"calendar_service/pkg"
-	user2 "calendar_service/user"
 	"database/sql"
 	"fmt"
 	_ "github.com/go-sql-driver/mysql"
@@ -21,7 +19,6 @@ const (
 func main() {
 	fmt.Println("开始")
 	fmt.Println("结束")
-	pkg.Text()
 	console.Log("日志打印")
 }
 func checkError(err error) {
@@ -30,8 +27,7 @@ func checkError(err error) {
 	}
 }
 func init() {
-	db := linkDB()
-	user2.CreateUser(db)
+	//db := linkDB()
 
 	//createData()
 	//readData()
