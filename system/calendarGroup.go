@@ -7,9 +7,9 @@ type CalendarGroup struct {
 	ApiCalendarGroup
 }
 type ApiCalendarGroup struct {
-	GroupID    uint   `json:"groupId" gorm:"primarykey"` // 主键
-	UserID     uint64 `json:"userId"`                    // 所属用户
-	GroupType  uint   `json:"groupType"`                 // 0 自己的日历 1 订阅日历
-	GroupColor string `json:"groupColor"`                //颜色
-	GroupName  string `json:"groupName"`                 // 名称
+	GroupID    uint   `json:"groupId" gorm:"primarykey"`
+	UserID     uint64 `json:"userId" gorm:"comment:所属用户"`
+	GroupType  uint   `json:"groupType" gorm:"comment:日历组说明0自己的日历；1订阅的日历"`
+	GroupColor string `json:"groupColor" gorm:"comment:日历颜色配置"`
+	GroupName  string `json:"groupName" gorm:"comment:日历名称"`
 }
