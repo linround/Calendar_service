@@ -10,14 +10,14 @@ type CalendarEvent struct {
 }
 type ApiCalendarEvent struct {
 	EventID        uint   `json:"eventId" gorm:"primarykey;comment:事件id;"`
-	EventName      string `json:"eventName" gorm:"事件名称"`
+	EventName      string `json:"eventName" gorm:"comment:事件名称"`
 	Start          uint64 `json:"start" gorm:"comment:开始时间"`
-	End            uint64 `json:"end" gorm:"结束时间"`
-	EventColor     string `json:"eventColor" gorm:"事件颜色"`
-	AllDay         bool   `json:"allDay" gorm:"全天设置"`
-	UserName       string `json:"userName" gorm:"事件创建者"`
-	EventLocation  string `json:"eventLocation" gorm:"事件地点"`
-	EventPersonnel string `json:"eventPersonnel" gorm:"事件人员"`
-	EventTimed     bool   `json:"eventTimed" gorm:"显示该事件"`
-	GroupId        uint64 `json:"groupId" gorm:"事件对应的日历组id"`
+	End            uint64 `json:"end" gorm:"comment:结束时间"`
+	EventColor     string `json:"eventColor" gorm:"comment:事件颜色"`
+	AllDay         bool   `json:"allDay" gorm:"comment:全天设置"`
+	UserName       string `json:"userName" gorm:"comment:事件创建者"`
+	EventLocation  string `json:"eventLocation" gorm:"comment:事件地点"`
+	EventPersonnel string `json:"eventPersonnel" gorm:"comment:事件人员"`
+	EventTimed     bool   `json:"eventTimed" gorm:"comment:显示该事件"`
+	GroupId        uint64 `json:"groupId" gorm:"comment:事件对应的日历组id"`
 }
