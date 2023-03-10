@@ -8,6 +8,7 @@ type ApiGroup struct {
 	CalendarEventApi system.CalendarEventApi
 	CalendarGroupApi system.CalendarGroupApi
 	CalendarUserApi  system.CalendarUserApi
+	CalendarBaseApi  system.CalendarBaseApi
 }
 
 var ApiGroupApp = new(ApiGroup)

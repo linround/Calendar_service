@@ -11,13 +11,20 @@ type CalendarUserApi struct {
 }
 
 func (api *CalendarUserApi) RegisterUser(ctx *gin.Context) {
-	var calendarUser system.CalendarUser
+	var calendarUser request.Register
 	err := ctx.ShouldBindJSON(&calendarUser)
 	if err != nil {
 		response.FailWithMessage(err.Error(), ctx)
 		return
 	}
-	err = calendarUserService.RegisterUser(calendarUser)
+	user := system.CalendarUser{
+		Password:    calendarUser.Password,
+		UserAccount: calendarUser.UserAccount,
+		UserName:    calendarUser.UserName,
+		AvatarUrl:   calendarUser.AvatarUrl,
+		UserEmail:   calendarUser.UserEmail,
+	}
+	err = calendarUserService.RegisterUser(user)
 	if err != nil {
 		response.FailWithMessage(err.Error(), ctx)
 		return
@@ -41,7 +48,7 @@ func (api *CalendarUserApi) GetUser(ctx *gin.Context) {
 }
 
 func (api *CalendarUserApi) UpdateUser(ctx *gin.Context) {
-	var params system.ApiCalendarUser
+	var params system.CalendarUser
 	err := ctx.ShouldBindJSON(&params)
 	if err != nil {
 		response.FailWithMessage(err.Error(), ctx)
@@ -56,7 +63,7 @@ func (api *CalendarUserApi) UpdateUser(ctx *gin.Context) {
 }
 
 func (api *CalendarUserApi) DeleteUser(ctx *gin.Context) {
-	var params system.ApiCalendarUser
+	var params system.CalendarUser
 	err := ctx.ShouldBindJSON(&params)
 	if err != nil {
 		response.FailWithMessage(err.Error(), ctx)
