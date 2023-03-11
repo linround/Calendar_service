@@ -1,32 +1,17 @@
 package initialize
 
 import (
+	"calendar_service/global"
 	"fmt"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
 
-const (
-	// mysql的用户 root
-	// mysql的登录密码为 linyuan333
-	publicMysqlPassword = "linyuan333" // 数据库密码
-	publicHost          = "121.199.1.247"
-	publicPassword      = "Linyuan333" // XShell XFtp 连接密码
-	nginxPath           = "usr/local/nginx/html"
-	servicePath         = "/calendar_service"
-	host                = "localhost"
-	database            = "calendar"
-	user                = "root"
-	password            = "123456"
-)
-
 func GormMysql() *gorm.DB {
 	//定义数据胡信息
-
-	//dsn := fmt.Sprintf("%s:%s@tcp(%s:3306)/%s?charset=utf8mb4,utf8&parseTime=True&loc=Local", user, password, host, database) // 本地dsn
-	dsn := fmt.Sprintf("%s:%s@tcp(%s:3306)/%s?charset=utf8mb4,utf8&parseTime=True&loc=Local", user, publicMysqlPassword, publicHost, database) // 云服务器dsn
+	mySql := global.CalendarConfig.Mysql
 	mysqlConfig := mysql.Config{
-		DSN:                       dsn,
+		DSN:                       mySql.Dsn(),
 		DefaultStringSize:         191,
 		SkipInitializeWithVersion: false,
 	}
