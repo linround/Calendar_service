@@ -1,7 +1,13 @@
 package global
 
-import "gorm.io/gorm"
+import (
+	"calendar_service/config"
+	"gorm.io/gorm"
+)
 
 // 定义全局变量
 
-var CalendarDB *gorm.DB
+var (
+	CalendarDB     *gorm.DB
+	CalendarConfig config.Server
+)

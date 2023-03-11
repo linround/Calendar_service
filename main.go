@@ -7,6 +7,7 @@ import (
 )
 
 func main() {
+	core.Viper()
 	// 连接数据库
 	// 将连接的数据库保存在全局上
 	global.CalendarDB = initialize.Gorm()

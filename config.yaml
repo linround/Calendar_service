@@ -1,0 +1,18 @@
+# 远程主机
+# host: 121.199.1.247
+# userName: root
+# password: linyuan333
+
+
+mysql:
+  host: 127.0.0.1
+  userName: root
+  password: "123456"
+  port: "3306"
+  config: charset=utf8mb4,utf8&parseTime=True&loc=Local
+  db-name: calendar
+  max-idle-conns: 10
+  max-open-conns: 100
+cors:
+  whitelist:
+  - allow-origin: "*"
