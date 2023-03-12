@@ -10,6 +10,7 @@ import (
 func GormMysql() *gorm.DB {
 	//定义数据胡信息
 	mySql := global.CalendarConfig.Mysql
+	fmt.Println(mySql.Dsn())
 	mysqlConfig := mysql.Config{
 		DSN:                       mySql.Dsn(),
 		DefaultStringSize:         191,

@@ -1,7 +1,6 @@
 package core
 
 import (
-	"calendar_service/global"
 	"calendar_service/initialize"
 	"fmt"
 )
@@ -17,10 +16,6 @@ const (
 )
 
 func RunServer() {
-	// 从db中加载jwt数据
-	if global.CalendarDB != nil {
-		//	这里主要是读取jwt名单，从而设置黑名单缓存
-	}
 
 	Router := initialize.Routers()
 	address := fmt.Sprintf(":%d", port)

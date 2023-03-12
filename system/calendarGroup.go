@@ -5,8 +5,8 @@ import (
 )
 
 type CalendarGroup struct {
-	global.CalendarEventModel
-	ApiCalendarGroup
+	global.CalendarEventModel `yaml:",inline"`
+	ApiCalendarGroup          `yaml:",inline"`
 }
 type ApiCalendarGroup struct {
 	GroupID    uint   `mapstructure:"" json:"groupId" gorm:"primarykey"`
@@ -35,6 +35,6 @@ type ApiCalendarGroup struct {
 
 // yaml
 //UUU     string `yaml:",omitempty"`
-// ,omitempty 在对象解码成字符串是 在只有默认值的情况下不会解码该字段
-// ,flow
-// ,inline
+// ,omitempty 在对象解码成字符串是 在只有默认值的情况下不会解码该字段 父结构体无法访问
+// ,flow 父结构体无法访问
+// ,inline 父结构体可以访问

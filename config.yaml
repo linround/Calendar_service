@@ -1,4 +1,5 @@
 # 主机登录
+# host: 121.199.1.247
 # hostPassword: Linyuan333
 
 # 本地主机数据库 登录
@@ -24,10 +25,12 @@ mysql:
   userName: root
   password: "123456"
   port: "3306"
-  config: charset=utf8mb4,utf8&parseTime=True&loc=Local
+  config: charset=utf8mb4,utf8&parseTime=true&loc=Local
   db-name: calendar
   max-idle-conns: 10
   max-open-conns: 100
 cors:
   whitelist:
   - allow-origin: "*"
+jwt:
+  signing-key: 74872b43-a5fe-4ab8-9769-2687141436b5
