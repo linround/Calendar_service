@@ -28,3 +28,6 @@ func (j *JWT) CreateToken(claims request.CustomClaims) (token string, err error)
 	// ES256 与RS256一样；
 	return jwt.NewWithClaims(jwt.SigningMethodHS256, claims).SignedString(j.SigningKey)
 }
+
+
+

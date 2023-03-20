@@ -22,6 +22,7 @@ func (calendarService *CalendarEventService) GetEventList(params request.SearchE
 }
 
 func (calendarService *CalendarEventService) UpdateEvent(event system.ApiCalendarEvent) (err error) {
+
 	err = global.CalendarDB.Model(&system.CalendarEvent{}).Where("event_id = ?", event.EventID).Updates(map[string]interface{}{
 		"event_name":      event.EventName,
 		"start":           event.Start,
