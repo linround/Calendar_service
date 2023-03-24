@@ -14,7 +14,7 @@ func (calendarService *CalendarGroupService) CreateGroup(group system.CalendarGr
 
 }
 func (calendarService *CalendarGroupService) GetGroup(params request.SearchCalendarGroupParams) (list []system.ApiCalendarGroup, err error) {
-	err = global.CalendarDB.Model(&system.CalendarGroup{}).Find(&list).Error
+	err = global.CalendarDB.Model(&system.CalendarGroup{}).Where("user_id = ?", params.UserID).Find(&list).Error
 	return
 }
 func (calendarService *CalendarGroupService) UpdateGroup(group system.ApiCalendarGroup) (err error) {

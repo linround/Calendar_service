@@ -4,6 +4,7 @@ import (
 	"calendar_service/model/common/response"
 	"calendar_service/model/system/request"
 	"calendar_service/system"
+	"calendar_service/utils"
 	"github.com/gin-gonic/gin"
 )
 
@@ -17,6 +18,12 @@ func (group *CalendarGroupApi) CreateGroup(ctx *gin.Context) {
 		response.FailWithMessage(err.Error(), ctx)
 		return
 	}
+
+	// 初始化token相关的参数信息
+
+	userID := utils.GetUserID(ctx)
+	calendarGroup.UserID = userID
+
 	err = calendarGroupService.CreateGroup(calendarGroup)
 	if err != nil {
 		response.FailWithMessage("创建失败", ctx)
@@ -34,6 +41,10 @@ func (group *CalendarGroupApi) GetGroupList(ctx *gin.Context) {
 		return
 	}
 
+	// 初始化token相关的参数信息
+
+	userID := utils.GetUserID(ctx)
+	params.UserID = userID
 	list, err := calendarGroupService.GetGroup(params)
 	if err != nil {
 		response.FailWithMessage("获取失败", ctx)
