@@ -17,7 +17,7 @@ func (calendarService *CalendarEventService) GetEventList(params request.SearchE
 	// 通过model指定了对应的表
 	// 通过sys.ApiCalendarEvent 指定了要查询的相关字段
 	// 最终填入list即可
-	err = global.CalendarDB.Model(&system.CalendarEvent{}).Find(&list).Error
+	err = global.CalendarDB.Model(&system.CalendarEvent{}).Where("user_id = ?", params.UserID).Find(&list).Error
 	return
 }
 
@@ -29,7 +29,7 @@ func (calendarService *CalendarEventService) UpdateEvent(event system.ApiCalenda
 		"end":             event.End,
 		"event_color":     event.EventColor,
 		"all_day":         event.AllDay,
-		"user_name":       event.UserName,
+		"user_account":    event.UserAccount,
 		"event_location":  event.EventLocation,
 		"event_personnel": event.EventPersonnel,
 		"event_timed":     event.EventTimed,

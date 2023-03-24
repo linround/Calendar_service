@@ -4,6 +4,7 @@ import (
 	"calendar_service/model/common/response"
 	"calendar_service/model/system/request"
 	"calendar_service/system"
+	"calendar_service/utils"
 	"github.com/gin-gonic/gin"
 )
 
@@ -18,6 +19,14 @@ func (event *CalendarEventApi) CreateEvent(ctx *gin.Context) {
 		response.FailWithMessage(err.Error(), ctx)
 		return
 	}
+
+	// 初始化token相关的参数信息
+
+	userID := utils.GetUserID(ctx)
+	UserAccount := utils.GetUserAccount(ctx)
+	calendarEvent.UserID = userID
+	calendarEvent.UserAccount = UserAccount
+
 	err = calendarEventService.CreateEvent(calendarEvent)
 	if err != nil {
 		response.FailWithMessage("创建失败", ctx)
@@ -28,10 +37,19 @@ func (event *CalendarEventApi) CreateEvent(ctx *gin.Context) {
 func (event *CalendarEventApi) GetEventList(ctx *gin.Context) {
 	var params request.SearchEventListParams
 	err := ctx.ShouldBindJSON(&params)
+
 	if err != nil {
 		response.FailWithMessage(err.Error(), ctx)
 		return
 	}
+
+	// 初始化token相关的参数信息
+
+	userID := utils.GetUserID(ctx)
+	UserAccount := utils.GetUserAccount(ctx)
+	params.UserID = userID
+	params.UserAccount = UserAccount
+
 	list, err := calendarEventService.GetEventList(params)
 	if err != nil {
 		response.FailWithMessage("获取失败", ctx)

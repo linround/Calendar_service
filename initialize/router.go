@@ -31,7 +31,7 @@ func Routers() *gin.Engine {
 
 	PrivateGroup := Router.Group("")
 	// 私有路由添加校验
-	PublicGroup.Use(middleware.JWTAuth())
+	PrivateGroup.Use(middleware.JWTAuth())
 
 	calendarEventRouter.InitCalendarEventRouter(PrivateGroup)
 	calendarGroupRouter.InitCalendarGroupRouter(PrivateGroup)

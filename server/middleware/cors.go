@@ -13,8 +13,8 @@ func Cors() gin.HandlerFunc {
 		origin := ctx.Request.Header.Get("Origin")
 		// 跨域配置
 		ctx.Header("Access-Control-Allow-Origin", origin)
-
-		ctx.Header("Access-Control-Allow-Headers", "Content-Type,")
+		// 设置运行添加的请求头
+		ctx.Header("Access-Control-Allow-Headers", "Content-Type,Token")
 		//	 options方法配置
 		if method == "OPTIONS" {
 			ctx.AbortWithStatus(http.StatusNoContent)

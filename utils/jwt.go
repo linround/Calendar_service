@@ -1,8 +1,14 @@
 package utils
 
 import (
+	"calendar_service/global"
 	"calendar_service/model/system/request"
+	"errors"
 	"github.com/golang-jwt/jwt/v5"
+)
+
+var (
+	TokenInvalid = errors.New("token 不合法")
 )
 
 type JWT struct {
@@ -11,9 +17,11 @@ type JWT struct {
 
 func NewJWT() *JWT {
 	return &JWT{
-		[]byte{},
+		[]byte(global.CalendarConfig.JWT.SigningKey),
 	}
 }
+
+// 创建一个账户密码声明
 
 func (j *JWT) CreateClaims(baseClaims request.BaseClaims) (claims request.CustomClaims) {
 	claims = request.CustomClaims{
@@ -29,5 +37,15 @@ func (j *JWT) CreateToken(claims request.CustomClaims) (token string, err error)
 	return jwt.NewWithClaims(jwt.SigningMethodHS256, claims).SignedString(j.SigningKey)
 }
 
-
-
+func (j *JWT) ParseToken(tokenString string) (*request.CustomClaims, error) {
+	token, _ := jwt.ParseWithClaims(tokenString, &request.CustomClaims{}, func(token *jwt.Token) (i interface{}, e error) {
+		return j.SigningKey, nil
+	})
+	if token != nil {
+		claims, ok := token.Claims.(*request.CustomClaims)
+		if ok {
+			return claims, nil
+		}
+	}
+	return nil, TokenInvalid
+}

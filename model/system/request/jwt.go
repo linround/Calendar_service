@@ -7,6 +7,6 @@ type CustomClaims struct {
 	jwt.RegisteredClaims
 }
 type BaseClaims struct {
-	UserAccount string
-	UserID      uint64
+	UserAccount string `json:"userAccount"`
+	UserID      uint64 `json:"userID"`
 }
