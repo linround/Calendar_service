@@ -1,0 +1,70 @@
+表注册成功
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] POST   /event/create             --> calendar_service/server/api/v1/system.(*CalendarEventApi).CreateEvent-fm (2 handlers)
+[GIN-debug] POST   /event/list               --> calendar_service/server/api/v1/system.(*CalendarEventApi).GetEventList-fm (2 handlers)
+[GIN-debug] POST   /event/update             --> calendar_service/server/api/v1/system.(*CalendarEventApi).UpdateEvent-fm (2 handlers)
+[GIN-debug] POST   /event/delete             --> calendar_service/server/api/v1/system.(*CalendarEventApi).DeleteEvent-fm (2 handlers)
+[GIN-debug] POST   /group/create             --> calendar_service/server/api/v1/system.(*CalendarGroupApi).CreateGroup-fm (2 handlers)
+[GIN-debug] POST   /group/list               --> calendar_service/server/api/v1/system.(*CalendarGroupApi).GetGroupList-fm (2 handlers)
+[GIN-debug] POST   /group/update             --> calendar_service/server/api/v1/system.(*CalendarGroupApi).UpdateGroup-fm (2 handlers)
+[GIN-debug] POST   /group/delete             --> calendar_service/server/api/v1/system.(*CalendarGroupApi).DeleteGroup-fm (2 handlers)
+服务运行在端口： 8888
+signal: interrupt
+表注册成功
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] POST   /event/create             --> calendar_service/server/api/v1/system.(*CalendarEventApi).CreateEvent-fm (2 handlers)
+[GIN-debug] POST   /event/list               --> calendar_service/server/api/v1/system.(*CalendarEventApi).GetEventList-fm (2 handlers)
+[GIN-debug] POST   /event/update             --> calendar_service/server/api/v1/system.(*CalendarEventApi).UpdateEvent-fm (2 handlers)
+[GIN-debug] POST   /event/delete             --> calendar_service/server/api/v1/system.(*CalendarEventApi).DeleteEvent-fm (2 handlers)
+[GIN-debug] POST   /group/create             --> calendar_service/server/api/v1/system.(*CalendarGroupApi).CreateGroup-fm (2 handlers)
+[GIN-debug] POST   /group/list               --> calendar_service/server/api/v1/system.(*CalendarGroupApi).GetGroupList-fm (2 handlers)
+[GIN-debug] POST   /group/update             --> calendar_service/server/api/v1/system.(*CalendarGroupApi).UpdateGroup-fm (2 handlers)
+[GIN-debug] POST   /group/delete             --> calendar_service/server/api/v1/system.(*CalendarGroupApi).DeleteGroup-fm (2 handlers)
+服务运行在端口： 8888
+signal: interrupt
+表注册成功
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] POST   /event/create             --> calendar_service/server/api/v1/system.(*CalendarEventApi).CreateEvent-fm (2 handlers)
+[GIN-debug] POST   /event/list               --> calendar_service/server/api/v1/system.(*CalendarEventApi).GetEventList-fm (2 handlers)
+[GIN-debug] POST   /event/update             --> calendar_service/server/api/v1/system.(*CalendarEventApi).UpdateEvent-fm (2 handlers)
+[GIN-debug] POST   /event/delete             --> calendar_service/server/api/v1/system.(*CalendarEventApi).DeleteEvent-fm (2 handlers)
+[GIN-debug] POST   /group/create             --> calendar_service/server/api/v1/system.(*CalendarGroupApi).CreateGroup-fm (2 handlers)
+[GIN-debug] POST   /group/list               --> calendar_service/server/api/v1/system.(*CalendarGroupApi).GetGroupList-fm (2 handlers)
+[GIN-debug] POST   /group/update             --> calendar_service/server/api/v1/system.(*CalendarGroupApi).UpdateGroup-fm (2 handlers)
+[GIN-debug] POST   /group/delete             --> calendar_service/server/api/v1/system.(*CalendarGroupApi).DeleteGroup-fm (2 handlers)
+服务运行在端口： 8888
+signal: interrupt
+表注册成功
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] POST   /event/create             --> calendar_service/server/api/v1/system.(*CalendarEventApi).CreateEvent-fm (2 handlers)
+[GIN-debug] POST   /event/list               --> calendar_service/server/api/v1/system.(*CalendarEventApi).GetEventList-fm (2 handlers)
+[GIN-debug] POST   /event/update             --> calendar_service/server/api/v1/system.(*CalendarEventApi).UpdateEvent-fm (2 handlers)
+[GIN-debug] POST   /event/delete             --> calendar_service/server/api/v1/system.(*CalendarEventApi).DeleteEvent-fm (2 handlers)
+[GIN-debug] POST   /group/create             --> calendar_service/server/api/v1/system.(*CalendarGroupApi).CreateGroup-fm (2 handlers)
+[GIN-debug] POST   /group/list               --> calendar_service/server/api/v1/system.(*CalendarGroupApi).GetGroupList-fm (2 handlers)
+[GIN-debug] POST   /group/update             --> calendar_service/server/api/v1/system.(*CalendarGroupApi).UpdateGroup-fm (2 handlers)
+[GIN-debug] POST   /group/delete             --> calendar_service/server/api/v1/system.(*CalendarGroupApi).DeleteGroup-fm (2 handlers)
+服务运行在端口： 8888
+[mysql] 2023/03/07 07:17:16 packets.go:122: closing bad idle connection: EOF
+[mysql] 2023/03/07 07:17:16 packets.go:122: closing bad idle connection: EOF
+
+2023/03/07 09:14:07 [32m/calendar_service/service/system/calendarGroup.go:17 [33mSLOW SQL >= 200ms
+[0m[31;1m[214.280ms] [33m[rows:5][35m SELECT `calendar_groups`.`group_id`,`calendar_groups`.`user_id`,`calendar_groups`.`group_type`,`calendar_groups`.`group_color`,`calendar_groups`.`group_name` FROM `calendar_groups` WHERE `calendar_groups`.`deleted_at` IS NULL[0m
+[mysql] 2023/03/08 08:45:04 packets.go:122: closing bad idle connection: EOF
+[mysql] 2023/03/08 08:45:04 packets.go:122: closing bad idle connection: EOF
+[mysql] 2023/03/09 08:56:07 packets.go:122: closing bad idle connection: EOF
+[mysql] 2023/03/09 08:56:07 packets.go:122: closing bad idle connection: EOF
+[mysql] 2023/03/13 16:19:53 packets.go:122: closing bad idle connection: EOF
+[mysql] 2023/03/13 16:19:53 packets.go:122: closing bad idle connection: EOF
