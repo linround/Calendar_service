@@ -18,7 +18,7 @@ type ApiCalendarEvent struct {
 	EventLocation  string `json:"eventLocation" gorm:"comment:事件地点"`
 	EventPersonnel string `json:"eventPersonnel" gorm:"comment:事件人员"`
 	EventTimed     bool   `json:"eventTimed" gorm:"comment:显示该事件"`
-	GroupId        uint64 `json:"groupId" gorm:"comment:事件对应的日历组id"`
+	GroupID        uint64 `json:"groupId" gorm:"comment:事件对应的日历组id"`
 	UserAccount    string `json:"userAccount" gorm:"comment:事件创建者"`
 	UserID         uint64 `json:"userID" gorm:"comment:事件所属的用户"`
 }
