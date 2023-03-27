@@ -7,14 +7,14 @@ import (
 type CalendarGroup struct {
 	global.CalendarEventModel `yaml:",inline"`
 	ApiCalendarGroup          `yaml:",inline"`
+	CalendarEvents            []CalendarEvent `gorm:"foreignKey:group_id"`
 }
 type ApiCalendarGroup struct {
-	GroupType     uint          `json:"groupType" gorm:"comment:日历组说明0自己的日历；1订阅的日历"`
-	GroupColor    string        `json:"groupColor" gorm:"comment:日历颜色配置"`
-	GroupName     string        `json:"groupName" gorm:"comment:日历名称"`
-	UserID        uint64        `json:"userId" gorm:"comment:所属用户"`
-	GroupID       uint64        ` json:"groupId" gorm:"primarykey" mapstructure:"groupId"`
-	CalendarEvent CalendarEvent `gorm:"foreignKey:GroupID"`
+	GroupType  uint   `json:"groupType" gorm:"comment:日历组说明0自己的日历；1订阅的日历"`
+	GroupColor string `json:"groupColor" gorm:"comment:日历颜色配置"`
+	GroupName  string `json:"groupName" gorm:"comment:日历名称"`
+	UserID     uint64 `json:"userId" gorm:"comment:所属用户"`
+	GroupID    uint64 ` json:"groupId" gorm:"primarykey" mapstructure:"groupId"`
 }
 
 /***
