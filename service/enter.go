@@ -9,6 +9,7 @@ type Group struct {
 	CalendarGroupService system.CalendarGroupService
 	CalendarUserService  system.CalendarUserService
 	CalendarBaseService  system.CalendarBaseService
+	CalendarDBService    system.CalendarDBService
 }
 
 var GroupApp = new(Group)

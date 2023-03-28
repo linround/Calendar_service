@@ -5,4 +5,5 @@ type RouterGroup struct {
 	CalendarGroupRouter
 	CalendarUserRouter
 	CalendarBaseRouter
+	CalendarDBRouter
 }

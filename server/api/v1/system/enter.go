@@ -9,4 +9,5 @@ var (
 	calendarGroupService = service.GroupApp.CalendarGroupService
 	calendarUserService  = service.GroupApp.CalendarUserService
 	calendarBaseService  = service.GroupApp.CalendarBaseService
+	calendarDBService    = service.GroupApp.CalendarDBService
 )

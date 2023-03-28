@@ -18,10 +18,12 @@ func Routers() *gin.Engine {
 
 	/**********************公有路由开始************************/
 	calendarBaseRouter := router.GroupApp.CalendarBaseRouter
+	calendarDBRouter := router.GroupApp.CalendarDBRouter
 
 	PublicGroup := Router.Group("")
 
 	calendarBaseRouter.InitCalendarBaseRouter(PublicGroup)
+	calendarDBRouter.InitCalendarDBRouter(PublicGroup)
 	/**********************公有路由结束************************/
 
 	/**********************私有路由开始************************/
