@@ -8,6 +8,7 @@ import (
 	"gorm.io/gorm"
 )
 
+var adminEmail = "yuanlincuc@gmail.com"
 var calendarUserOrder = system.InitOrderSystem + 1
 
 func init() {
@@ -29,6 +30,13 @@ func (u *initCalendarUser) InitializerName() string {
 	return CalendarUser{}.TableName()
 }
 func (u *initCalendarUser) DataInserted(ctx context.Context) bool {
+	db, ok := ctx.Value("db").(*gorm.DB)
+	if !ok {
+		return false
+	}
+	if errors.Is(db.Where("user_email = ?", adminEmail).First(&CalendarUser{}).Error, gorm.ErrRecordNotFound) {
+		return false
+	}
 	return true
 }
 func (u *initCalendarUser) TableCreated(ctx context.Context) bool {
@@ -51,7 +59,7 @@ func (u *initCalendarUser) InitializeData(ctx context.Context) (next context.Con
 			UserAccount: "admin",
 			UserName:    "admin",
 			AvatarUrl:   "https://avatars.githubusercontent.com/u/44738166?v=4",
-			UserEmail:   "yuanlincuc@gmail.com",
+			UserEmail:   adminEmail,
 		},
 	}
 	if err = db.Create(&entities).Error; err != nil {
