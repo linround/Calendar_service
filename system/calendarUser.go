@@ -21,3 +21,7 @@ type CalendarUser struct {
 	CalendarGroups []CalendarGroup `gorm:"foreignKey:user_id"`
 	CalendarEvents []CalendarEvent `gorm:"foreignKey:user_id"`
 }
+
+func (u CalendarUser) TableName() string {
+	return "calendar_users"
+}

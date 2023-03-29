@@ -17,6 +17,10 @@ type ApiCalendarGroup struct {
 	GroupID    uint64 ` json:"groupId" gorm:"primarykey" mapstructure:"groupId"`
 }
 
+func (g CalendarGroup) TableName() string {
+	return "calendar_groups"
+}
+
 /***
 
  	gorm:"-"  ====== 表示字段只是属性，不在数据库表中创建列

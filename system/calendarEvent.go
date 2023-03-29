@@ -22,3 +22,7 @@ type ApiCalendarEvent struct {
 	UserAccount    string `json:"userAccount" gorm:"comment:事件创建者"`
 	UserID         uint64 `json:"userID" gorm:"comment:事件所属的用户"`
 }
+
+func (e CalendarEvent) TableName() string {
+	return "calendar_events"
+}

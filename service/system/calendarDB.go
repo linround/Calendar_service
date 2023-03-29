@@ -4,10 +4,24 @@ import (
 	"calendar_service/global"
 	"calendar_service/model/system/request"
 	"context"
+	"errors"
 	"gorm.io/gorm"
 )
 
+var (
+	InitOrderSystem = 10
+)
+
+var ErrMissingDBContext = errors.New("missing db in context")
+
 var initializers initSlice
+
+type SubInitializer interface {
+	InitializerName() string
+	DataInserted(ctx context.Context) bool
+	TableCreated(ctx context.Context) bool
+	InitializeData(ctx context.Context) (next context.Context, err error)
+}
 
 type DBInitHandler interface {
 	EnsureDB(ctx context.Context, config *request.InitDB) (context.Context, error)
@@ -16,6 +30,12 @@ type DBInitHandler interface {
 }
 
 type CalendarDBService struct {
+}
+
+func RegisterInit(order int, initalizer SubInitializer) {
+	if initializers == nil {
+		initializers = initSlice{}
+	}
 }
 
 func (d *CalendarDBService) InitDB(config request.InitDB) (err error) {

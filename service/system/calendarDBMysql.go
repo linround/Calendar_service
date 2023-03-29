@@ -17,19 +17,12 @@ func NewMysqlInitHandler() *MysqlInitHandler {
 	return &MysqlInitHandler{}
 }
 
-type SubInitializer interface {
-	InitializerName() string
-	DataInserted(ctx context.Context) bool
-	TableCreated(ctx context.Context) bool
-	InitializeData(ctx context.Context) (next context.Context, err error)
-}
-
 func (h MysqlInitHandler) EnsureDB(ctx context.Context, config *request.InitDB) (next context.Context, err error) {
 	c := config.ToMysqlConfig()
 	// 在上下文传递config
 	next = context.WithValue(ctx, "config", c)
 	dsn := config.MysqlDsn()
-	createSql := fmt.Sprintf("CREATE DATABASE IF NOT EXISTS '%s'", c.DbName)
+	createSql := fmt.Sprintf("CREATE DATABASE IF NOT EXISTS %s", c.DbName)
 	err = createDatabase(dsn, "mysql", createSql)
 	if err != nil {
 		return nil, err
@@ -64,6 +57,12 @@ func (h MysqlInitHandler) InitData(ctx context.Context, inits initSlice) error {
 	return nil
 }
 
+/*
+todo
+这里定义了 初始化时候的对象
+order 用于初始化时的顺序处理
+SubInitializer
+*/
 type orderedInitializer struct {
 	order int
 	SubInitializer
