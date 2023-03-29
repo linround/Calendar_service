@@ -4,7 +4,6 @@ import (
 	"calendar_service/model/system/request"
 	"context"
 	"database/sql"
-	"errors"
 	"fmt"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
@@ -87,10 +86,16 @@ func createTables(ctx context.Context, inits initSlice) error {
 		c()
 	}(cancel)
 	for _, init := range inits {
+		// 检查表是否存在
+		// 存在就跳过
 		if init.TableCreated(next) {
 			continue
 		}
-		return errors.New("创建表失败")
+		n, err := init.MigrateTable(ctx)
+		if err != nil {
+			return err
+		}
+		next = n
 	}
 	return nil
 }

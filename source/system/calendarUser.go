@@ -4,7 +4,7 @@ import (
 	"calendar_service/service/system"
 	. "calendar_service/system"
 	"context"
-	"github.com/pkg/errors"
+	"errors"
 	"gorm.io/gorm"
 )
 
@@ -17,6 +17,14 @@ func init() {
 type initCalendarUser struct {
 }
 
+func (u *initCalendarUser) MigrateTable(ctx context.Context) (context.Context, error) {
+	db, ok := ctx.Value("db").(*gorm.DB)
+	if !ok {
+		return ctx, system.ErrMissingDBContext
+	}
+	return ctx, db.AutoMigrate(&CalendarUser{})
+
+}
 func (u *initCalendarUser) InitializerName() string {
 	return CalendarUser{}.TableName()
 }
@@ -47,7 +55,7 @@ func (u *initCalendarUser) InitializeData(ctx context.Context) (next context.Con
 		},
 	}
 	if err = db.Create(&entities).Error; err != nil {
-		return nil, errors.Wrap(err, CalendarUser{}.TableName()+"表初始化失败")
+		return nil, errors.New(CalendarUser{}.TableName() + "表初始化失败")
 	}
 	next = context.WithValue(ctx, u.InitializerName(), entities)
 	return
