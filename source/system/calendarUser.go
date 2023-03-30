@@ -4,18 +4,16 @@ import (
 	"calendar_service/service/system"
 	. "calendar_service/system"
 	"context"
-	"errors"
 	"gorm.io/gorm"
 )
 
-var adminEmail = "yuanlincuc@gmail.com"
 var calendarUserOrder = system.InitOrderSystem + 1
+
+type initCalendarUser struct {
+}
 
 func init() {
 	system.RegisterInit(calendarUserOrder, &initCalendarUser{})
-}
-
-type initCalendarUser struct {
 }
 
 func (u *initCalendarUser) MigrateTable(ctx context.Context) (context.Context, error) {
@@ -26,19 +24,6 @@ func (u *initCalendarUser) MigrateTable(ctx context.Context) (context.Context, e
 	return ctx, db.AutoMigrate(&CalendarUser{})
 
 }
-func (u *initCalendarUser) InitializerName() string {
-	return CalendarUser{}.TableName()
-}
-func (u *initCalendarUser) DataInserted(ctx context.Context) bool {
-	db, ok := ctx.Value("db").(*gorm.DB)
-	if !ok {
-		return false
-	}
-	if errors.Is(db.Where("user_email = ?", adminEmail).First(&CalendarUser{}).Error, gorm.ErrRecordNotFound) {
-		return false
-	}
-	return true
-}
 func (u *initCalendarUser) TableCreated(ctx context.Context) bool {
 	db, ok := ctx.Value("db").(*gorm.DB)
 	if !ok {
@@ -46,25 +31,4 @@ func (u *initCalendarUser) TableCreated(ctx context.Context) bool {
 	}
 	// 检查对应的表是否存在
 	return db.Migrator().HasTable(&CalendarUser{})
-}
-
-func (u *initCalendarUser) InitializeData(ctx context.Context) (next context.Context, err error) {
-	db, ok := ctx.Value("db").(*gorm.DB)
-	if !ok {
-		return ctx, system.ErrMissingDBContext
-	}
-	entities := []CalendarUser{
-		{
-			Password:    "123456",
-			UserAccount: "admin",
-			UserName:    "admin",
-			AvatarUrl:   "https://avatars.githubusercontent.com/u/44738166?v=4",
-			UserEmail:   adminEmail,
-		},
-	}
-	if err = db.Create(&entities).Error; err != nil {
-		return nil, errors.New(CalendarUser{}.TableName() + "表初始化失败")
-	}
-	next = context.WithValue(ctx, u.InitializerName(), entities)
-	return
 }

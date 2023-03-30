@@ -6,28 +6,26 @@ import (
 	"context"
 	"errors"
 	"gorm.io/gorm"
+	"sort"
 )
 
 var (
 	InitOrderSystem = 10
 )
 
-var ErrMissingDBContext = errors.New("missing db in context")
+var ErrMissingDBContext = errors.New("缺少上下文")
 
 var initializers initSlice
 
 type SubInitializer interface {
-	InitializerName() string                                              // 获取对应要创建的表的名字
-	DataInserted(ctx context.Context) bool                                // 在这个表中插入数据的方法
-	TableCreated(ctx context.Context) bool                                // 判断这个表是否已经被创建
-	InitializeData(ctx context.Context) (next context.Context, err error) // 创建初始数据
-	MigrateTable(ctx context.Context) (context.Context, error)            // 创建表
+	TableCreated(ctx context.Context) bool                     // 判断这个表是否已经被创建
+	MigrateTable(ctx context.Context) (context.Context, error) // 创建表
 }
 
 type DBInitHandler interface {
 	EnsureDB(ctx context.Context, config *request.InitDB) (context.Context, error)
 	InitTables(ctx context.Context, inits initSlice) error
-	InitData(ctx context.Context, inits initSlice) error
+	InitData(ctx context.Context) error
 }
 
 type CalendarDBService struct {
@@ -46,6 +44,11 @@ func RegisterInit(order int, i SubInitializer) {
 func (d *CalendarDBService) InitDB(config request.InitDB) (err error) {
 	// context 的作用
 	ctx := context.TODO()
+	if len(initializers) == 0 {
+		return errors.New("无初始化对象")
+	}
+	sort.Sort(&initializers)
+
 	var initHandler DBInitHandler
 	initHandler = NewMysqlInitHandler()
 	ctx = context.WithValue(ctx, "dbType", "mysql")
@@ -60,8 +63,5 @@ func (d *CalendarDBService) InitDB(config request.InitDB) (err error) {
 		return err
 	}
 
-	if err = initHandler.InitData(ctx, initializers); err != nil {
-		return err
-	}
 	return nil
 }

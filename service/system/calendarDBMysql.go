@@ -38,21 +38,11 @@ func (h MysqlInitHandler) EnsureDB(ctx context.Context, config *request.InitDB) 
 func (h MysqlInitHandler) InitTables(ctx context.Context, inits initSlice) error {
 	return createTables(ctx, inits)
 }
-func (h MysqlInitHandler) InitData(ctx context.Context, inits initSlice) error {
-	next, cancel := context.WithCancel(ctx)
+func (h MysqlInitHandler) InitData(ctx context.Context) error {
+	_, cancel := context.WithCancel(ctx)
 	defer func(c func()) {
 		c()
 	}(cancel)
-	for _, init := range inits {
-		if init.DataInserted(next) {
-			continue
-		}
-		n, err := init.InitializeData(next)
-		if err != nil {
-			return err
-		}
-		next = n
-	}
 	return nil
 }
 
@@ -67,6 +57,17 @@ type orderedInitializer struct {
 	SubInitializer
 }
 type initSlice []*orderedInitializer
+
+func (a initSlice) Len() int {
+	return len(a)
+}
+
+func (a initSlice) Less(i, j int) bool {
+	return a[i].order < a[j].order
+}
+func (a initSlice) Swap(i, j int) {
+	a[i], a[j] = a[j], a[i]
+}
 
 func createDatabase(dsn string, driver string, createSql string) error {
 	db, err := sql.Open(driver, dsn)
