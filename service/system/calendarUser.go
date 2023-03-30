@@ -18,8 +18,19 @@ func (calendarService *CalendarUserService) RegisterUser(user system.CalendarUse
 	if !errors.Is(global.CalendarDB.Model(&system.CalendarUser{}).Where("user_account = ?", user.UserAccount).First(&preUser).Error, gorm.ErrRecordNotFound) {
 		return errors.New("用户已存在")
 	}
-	// create 会自动反射到表名上
-	return global.CalendarDB.Create(&user).Error
+	err = global.CalendarDB.Create(&user).Error
+	if err != nil {
+		return errors.New("用户创建失败")
+	}
+	calendarGroup := system.CalendarGroup{
+		ApiCalendarGroup: system.ApiCalendarGroup{
+			GroupType:  0,
+			GroupColor: "#606809",
+			GroupName:  "主日历",
+			UserID:     user.UserID,
+		},
+	}
+	return global.CalendarDB.Create(&calendarGroup).Error
 
 }
 func (calendarService *CalendarUserService) GetUser(params request.SearchCalendarUserParams) (user system.CalendarUser, err error) {
