@@ -17,7 +17,9 @@ func GormMysql() *gorm.DB {
 		SkipInitializeWithVersion: false,
 	}
 	//	建立数据库连接
-	db, err := gorm.Open(mysql.New(mysqlConfig), &gorm.Config{})
+	db, err := gorm.Open(mysql.New(mysqlConfig), &gorm.Config{
+		DisableForeignKeyConstraintWhenMigrating: false,
+	})
 	if err != nil {
 		fmt.Println("数据库连接错误")
 		return nil

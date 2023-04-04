@@ -22,6 +22,7 @@ func (calendarService *CalendarUserService) RegisterUser(user system.CalendarUse
 	if err != nil {
 		return errors.New("用户创建失败")
 	}
+	// 注册初始日历组
 	calendarGroup := system.CalendarGroup{
 		ApiCalendarGroup: system.ApiCalendarGroup{
 			GroupType:  0,

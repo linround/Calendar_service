@@ -13,7 +13,7 @@ type initCalendarGroup struct {
 var calendarGroupOrder = calendarUserOrder + 1
 
 func init() {
-	system.RegisterInit(calendarUserOrder, &initCalendarGroup{})
+	system.RegisterInit(calendarGroupOrder, &initCalendarGroup{})
 }
 
 func (g initCalendarGroup) MigrateTable(ctx context.Context) (context.Context, error) {

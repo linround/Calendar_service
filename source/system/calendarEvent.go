@@ -10,7 +10,7 @@ import (
 type initCalendarEvent struct {
 }
 
-var calendarEventOrder = calendarGroupOrder + 1
+var calendarEventOrder = calendarGroupOrder - 1
 
 func init() {
 	system.RegisterInit(calendarEventOrder, &initCalendarEvent{})

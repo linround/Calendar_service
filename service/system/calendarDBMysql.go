@@ -21,7 +21,7 @@ func (h MysqlInitHandler) EnsureDB(ctx context.Context, config *request.InitDB) 
 	// 在上下文传递config
 	next = context.WithValue(ctx, "config", c)
 	dsn := config.MysqlDsn()
-	createSql := fmt.Sprintf("CREATE DATABASE IF NOT EXISTS %s", c.DbName)
+	createSql := fmt.Sprintf("CREATE DATABASE IF NOT EXISTS %s DEFAULT CHARACTER SET utf8 COLLATE utf8_General_ci ", c.DbName)
 	err = createDatabase(dsn, "mysql", createSql)
 	if err != nil {
 		return nil, err
@@ -29,7 +29,10 @@ func (h MysqlInitHandler) EnsureDB(ctx context.Context, config *request.InitDB) 
 	var db *gorm.DB
 	db, err = gorm.Open(mysql.New(mysql.Config{
 		DSN: c.Dsn(),
-	}))
+	}), &gorm.Config{
+		// 初始化过程禁用外键约束
+		DisableForeignKeyConstraintWhenMigrating: true,
+	})
 	next = context.WithValue(next, "db", db)
 	return next, err
 
