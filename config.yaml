@@ -19,7 +19,7 @@
 
 # 前端代码资源
 # usr/local/nginx/html
-
+  
 mysql:
   host: 127.0.0.1
   userName: root
