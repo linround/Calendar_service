@@ -3,8 +3,6 @@
 # hostPassword: Linyuan333
 
 
-# nginx 可执行程序
-# 路径：/usr/local/nginx/sbin
 
 # me.ucalendar.cn
 # 资源路径：/usr/local/bright_moon
@@ -26,8 +24,14 @@
 # 服务代码资源
 # /calendar_service
 
+# nginx 可执行程序
+# 路径：/usr/local/nginx/sbin
+
 # 前端代码资源
 # usr/local/nginx/html
+
+# nginx 配置路径
+# /usr/local/nginx/conf
   
 mysql:
   host: 127.0.0.1
