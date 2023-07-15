@@ -4,10 +4,6 @@
 
 
 
-# me.ucalendar.cn
-# 资源路径：/usr/local/bright_moon
-# three.ucalendar.cn
-# 资源路径：/usr/local/threejs
 
 # 本地主机数据库 登录
 # host: 127.0.0.1
@@ -24,19 +20,7 @@
 # 服务代码资源
 # /calendar_service
 
-# nginx 可执行程序
-# 路径：/usr/local/nginx/sbin
 
-# 前端代码资源
-# usr/local/nginx/html
-
-# nginx 配置路径
-# /usr/local/nginx/conf
-
-# nginx 相关模块
-# --prefix=/usr/local/nginx --with-http_stub_status_module
-# --with-http_ssl_module --with-file-aio --with-http_realip_module --with-http_gzip_static_module
-#
   
 mysql:
   host: 127.0.0.1
