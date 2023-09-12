@@ -43,4 +43,4 @@ jobs:
           port: ${{ secrets.PORT }}
           script: |
             docker pull ${{ secrets.WEB_SITE_NAME }}/ucalendar_service:latest
-            docker run -d -p 8888:8888 ${{ secrets.WEB_SITE_NAME }}/ucalendar_service
+            docker run --name=ucalendarService -d -p 8888:8888 ${{ secrets.WEB_SITE_NAME }}/ucalendar_service
