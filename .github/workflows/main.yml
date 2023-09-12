@@ -30,6 +30,7 @@ jobs:
           password: ${{ secrets.WEB_SITE_ACCESS_TOKEN }} # dockerhub分发的token
       - name: Build and push
         uses: docker/build-push-action@v4
+#        在这里会默认执行Dockerfile中的流程
         with:
           push: true
           tags: ${{ secrets.WEB_SITE_NAME }}/ucalendar_service:latest
