@@ -1,5 +1,9 @@
 # 基础镜像，基于golang的alpine镜像构建--编译阶段
-FROM golang:alpine
+FROM golang:alpine as runner
+# 全局工作目录
+WORKDIR /app
+# 把运行Dockerfile文件的当前目录所有文件复制到目标目录
+COPY . /app
 # 环境变量
 #  用于代理下载go项目依赖的包
 ENV GO111MODULE=on \
