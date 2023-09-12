@@ -48,4 +48,4 @@ jobs:
             docker stop ucalendarService 
             docker rm ucalendarService
             docker pull ${{ secrets.WEB_SITE_NAME }}/ucalendar_service:latest
-            docker run --name=ucalendarService -d -p 8888:8888 ${{ secrets.WEB_SITE_NAME }}/ucalendar_service
+            docker run --privileged=true --name=ucalendarService -d -p 8888:8888 ${{ secrets.WEB_SITE_NAME }}/ucalendar_service
