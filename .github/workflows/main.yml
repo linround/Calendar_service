@@ -42,4 +42,4 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
           script: |
-            whoami
+            docker push ${{ secrets.WEB_SITE_NAME }}/ucalendar_service:latest
