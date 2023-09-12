@@ -1,1 +1,33 @@
 
+name: deploy service
+
+# 监听push 事件
+on:
+  push:
+    tags:
+      - 'v1.*' # 指定tag 运行工作流
+  pull_request:
+    branches: [ main ]
+
+# 指定运行的任务
+jobs:
+  # 运行任务 build
+  build:
+
+    runs-on: ubuntu-latest # 任务运行的操作平台
+
+    # 指定任务的运行步骤
+    steps:
+
+      - name:  Docker Hub 登录
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.WEB_SITE_NAME }} # dockerhub用户名
+          password: ${{ secrets.WEB_SITE_ACCESS_TOKEN }} # dockerhub分发的token
+      - name: Build and push
+        uses: docker/build-push-action@v2
+        with:
+          context: ./
+          file: ./Dockerfile
+          push: true
+          tags: ${{ secrets.WEB_SITE_NAME }}/ucalendar_service:latest
