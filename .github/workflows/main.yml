@@ -48,9 +48,9 @@ jobs:
 #          1.暂停了已经运行的容器
 #          2.移除该容器
 #          3.拉去更新容器
-#          4. 运行一个容易在8888端口进行映射，同时将该镜像命名ucalendarService，并开启镜像的所有能力，包括防火墙
+#          4. 运行一个容易在8888端口进行映射，同时将该镜像命名ucalendarService
           script: |
             docker stop ucalendarService 
             docker rm ucalendarService
             docker pull ${{ secrets.WEB_SITE_NAME }}/ucalendar_service:latest
-            docker run --privileged=true --name=ucalendarService -d -p 8888:8888 ${{ secrets.WEB_SITE_NAME }}/ucalendar_service
+            docker run --name=ucalendarService -d -p 8888:8888 ${{ secrets.WEB_SITE_NAME }}/ucalendar_service
