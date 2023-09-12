@@ -1,5 +1,6 @@
 name: deploy service
-
+# 运行器 的名称
+run-name: ucalendar_service
 # 监听push 事件
 on:
   push:
