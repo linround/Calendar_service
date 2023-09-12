@@ -1,5 +1,5 @@
 # 基础镜像，基于golang的alpine镜像构建--编译阶段
-#FROM golang:alpine as runner
+FROM golang:alpine as runner
 ## 全局工作目录
 #WORKDIR .
 ## 把运行Dockerfile文件的当前目录所有文件复制到目标目录
@@ -24,4 +24,5 @@
 ## 需暴露的端口
 #EXPOSE 8888
 ## docker run命令触发的真实命令(相当于直接运行编译后的可运行文件)
-#ENTRYPOINT ["./main"]
+
+# ENTRYPOINT ["./main"]
