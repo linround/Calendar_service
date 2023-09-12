@@ -1,4 +1,3 @@
-
 name: deploy service
 
 # 监听push 事件
@@ -40,3 +39,4 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
           script: |
+            whoami
