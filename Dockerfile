@@ -8,8 +8,6 @@ ENV GO111MODULE=on \
     GOARCH=amd64\
     GOPROXY=https://goproxy.cn
 RUN GOOS=linux GOARCH=amd64 CGO_ENABLED=0
-RUN run: go mod tidy
-RUN run: go mod download
 RUN go build main.go
 ENTRYPOINT ["./main"]
 EXPOSE 8888
