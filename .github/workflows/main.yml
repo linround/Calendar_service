@@ -31,3 +31,12 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: ${{ secrets.WEB_SITE_NAME }}/ucalendar_service:latest
+
+      - name: Restart server   # 第五步，重启服务
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          port: ${{ secrets.PORT }}
+          script: |
