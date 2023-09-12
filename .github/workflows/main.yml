@@ -44,6 +44,11 @@ jobs:
           port: ${{ secrets.PORT }}
 #          初始已经设置过容器名 ucalendarService
 #          为了更好的进行 更新可以使用不同的tag触发不同的工作流
+#          以下步骤完成：
+#          1.暂停了已经运行的容器
+#          2.移除该容器
+#          3.拉去更新容器
+#          4. 运行一个容易在8888端口进行映射，同时将该镜像命名ucalendarService，并开启镜像的所有能力，包括防火墙
           script: |
             docker stop ucalendarService 
             docker rm ucalendarService
