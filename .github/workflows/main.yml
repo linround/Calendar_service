@@ -47,10 +47,12 @@ jobs:
 #          以下步骤完成：
 #          1.暂停了已经运行的容器
 #          2.移除该容器
+#          3.移除之前的镜像，防止消耗太多内存
 #          3.拉取更新镜像
 #          4.使用镜像运行一个容器在8888端口进行映射，同时将该运行的容器命名ucalendarService
           script: |
             docker stop ucalendarService 
             docker rm ucalendarService
+            docker rmi ${{ secrets.WEB_SITE_NAME }}/ucalendar_service:latest
             docker pull ${{ secrets.WEB_SITE_NAME }}/ucalendar_service:latest
             docker run --name=ucalendarService -d -p 8888:8888 ${{ secrets.WEB_SITE_NAME }}/ucalendar_service
