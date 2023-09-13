@@ -47,8 +47,8 @@ jobs:
 #          以下步骤完成：
 #          1.暂停了已经运行的容器
 #          2.移除该容器
-#          3.拉去更新容器
-#          4. 运行一个容易在8888端口进行映射，同时将该镜像命名ucalendarService
+#          3.拉取更新镜像
+#          4.使用镜像运行一个容器在8888端口进行映射，同时将该运行的容器命名ucalendarService
           script: |
             docker stop ucalendarService 
             docker rm ucalendarService
