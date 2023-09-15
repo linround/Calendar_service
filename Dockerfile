@@ -36,6 +36,6 @@ COPY --from=builder /ucalendarService/config.yaml /config.yaml
 
 # RUN 是在构建时执行的，CMD命令是在开启时执行的
 # 设置服务入口
-ENTRYPOINT ["./app/main"]
+ENTRYPOINT ["./ucalendarService/main"]
 # 开启服务之后在暴露端口
 EXPOSE 8888
