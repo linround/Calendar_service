@@ -5,9 +5,10 @@ import "calendar_service/service"
 // 命名自己的局部service
 
 var (
-	calendarEventService = service.GroupApp.CalendarEventService
-	calendarGroupService = service.GroupApp.CalendarGroupService
-	calendarUserService  = service.GroupApp.CalendarUserService
-	calendarBaseService  = service.GroupApp.CalendarBaseService
-	calendarDBService    = service.GroupApp.CalendarDBService
+	calendarEventService        = service.GroupApp.CalendarEventService
+	calendarGroupService        = service.GroupApp.CalendarGroupService
+	calendarUserService         = service.GroupApp.CalendarUserService
+	calendarBaseService         = service.GroupApp.CalendarBaseService
+	calendarDBService           = service.GroupApp.CalendarDBService
+	siteMonitoringRecordService = service.GroupApp.SiteMonitoringRecordService
 )

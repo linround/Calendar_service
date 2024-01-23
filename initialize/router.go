@@ -15,6 +15,12 @@ func Routers() *gin.Engine {
 	// 小写无法被外部访问
 	// 配置跨域请求
 	Router.Use(middleware.Cors())
+	/**********************系统监测 统计 开始************************/
+	siteMonitoringRouter := router.GroupApp.SiteMonitoringRouter
+
+	MonitoringPublicGroup := Router.Group("")
+	siteMonitoringRouter.InitSiteMonitoringRouter(MonitoringPublicGroup)
+	/**********************系统监测 统计 结束************************/
 
 	/**********************公有路由开始************************/
 	calendarBaseRouter := router.GroupApp.CalendarBaseRouter
