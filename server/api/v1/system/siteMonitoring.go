@@ -17,7 +17,7 @@ func (receiver *SiteMonitoringApi) AddRecord(ctx *gin.Context) {
 		return
 	}
 
-	ip := ctx.ClientIP()
+	ip := ctx.Request.Header.Get("X-Forward-For")
 	record.SourceIP = ip
 	err = siteMonitoringRecordService.AddRecord(record)
 	if err != nil {
