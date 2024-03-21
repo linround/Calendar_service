@@ -29,6 +29,8 @@ func RegisterTables(db *gorm.DB) {
 		system.CalendarUser{},
 		// 网站埋点表
 		system.SiteMonitoring{},
+		// 图片字段存储
+		system.PictureStorage{},
 	)
 	if err != nil {
 		fmt.Println("表注册失败")

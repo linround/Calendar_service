@@ -11,6 +11,7 @@ type ApiGroup struct {
 	CalendarBaseApi   system.CalendarBaseApi
 	CalendarDBApi     system.CalendarDBApi
 	SiteMonitoringApi system.SiteMonitoringApi
+	PictureStorageApi system.PictureStorageApi
 }
 
 var ApiGroupApp = new(ApiGroup)

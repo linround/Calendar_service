@@ -11,6 +11,7 @@ type Group struct {
 	CalendarBaseService         system.CalendarBaseService
 	CalendarDBService           system.CalendarDBService
 	SiteMonitoringRecordService system.SiteMonitoringRecordService
+	PictureStorageService       system.PictureStorageService
 }
 
 var GroupApp = new(Group)

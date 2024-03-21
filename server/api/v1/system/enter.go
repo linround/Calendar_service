@@ -11,4 +11,5 @@ var (
 	calendarBaseService         = service.GroupApp.CalendarBaseService
 	calendarDBService           = service.GroupApp.CalendarDBService
 	siteMonitoringRecordService = service.GroupApp.SiteMonitoringRecordService
+	pictureStorageService       = service.GroupApp.PictureStorageService
 )
