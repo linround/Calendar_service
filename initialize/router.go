@@ -21,6 +21,12 @@ func Routers() *gin.Engine {
 	MonitoringPublicGroup := Router.Group("")
 	siteMonitoringRouter.InitSiteMonitoringRouter(MonitoringPublicGroup)
 	/**********************系统监测 统计 结束************************/
+	/**********************图片统计 统计 开始************************/
+	pictureStorageRouter := router.GroupApp.PictureStorageRouter
+
+	PictureStorageRouterGroup := Router.Group("")
+	pictureStorageRouter.InitPictureStorageRouter(PictureStorageRouterGroup)
+	/**********************图片统计 统计 结束************************/
 
 	/**********************公有路由开始************************/
 	calendarBaseRouter := router.GroupApp.CalendarBaseRouter

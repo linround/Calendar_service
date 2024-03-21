@@ -7,4 +7,5 @@ type RouterGroup struct {
 	CalendarBaseRouter
 	CalendarDBRouter
 	SiteMonitoringRouter
+	PictureStorageRouter
 }
