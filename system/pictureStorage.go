@@ -8,6 +8,7 @@ type PictureStorage struct {
 	ImageUrl                  uint64 `json:"imageUrl" gorm:"图片链接"`
 	UserId                    string `json:"userId" gorm:"图片所属的用户ID"`
 	PictureType               string `json:"pictureType" gorm:"图片的类型"`
+	Prompt                    string `json:"prompt" gorm:"图片的生成提示词"`
 }
 
 type PictureStorageRecords struct {
