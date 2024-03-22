@@ -25,7 +25,7 @@
 mysql:
   host: 121.199.1.247
   userName: root
-  password: "Linyuan333"
+  password: "linyuan333"
   port: "3306"
   config: charset=utf8mb4,utf8&parseTime=true&loc=Local
   db-name: calendar
