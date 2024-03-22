@@ -18,6 +18,8 @@ func (receiver *PictureStorageApi) AddPicture(ctx *gin.Context) {
 		return
 	}
 
+	ip := ctx.Request.Header.Get("X-Forward-For")
+	picture.SourceIP = ip
 	err = pictureStorageService.AddPicture(picture)
 	if err != nil {
 		response.FailWithMessage(err.Error(), ctx)
