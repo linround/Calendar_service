@@ -27,7 +27,7 @@ mysql:
   userName: root
   password: "linyuan333"
   port: "3306"
-  config: charset=utf8mb4,utf8&parseTime=true&loc=Local
+  config: charset=utf8mb4,utf8&parseTime=true&loc=Asia%2fShanghai
   db-name: calendar
   max-idle-conns: 10
   max-open-conns: 100
