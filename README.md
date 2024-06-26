@@ -27,6 +27,9 @@ If you use this project for commercial purposes, please abide by the GPL-3.0 agr
 
 
 
+# 项目文件地址
+/usr/linyuan/calendarServer
+
 # 日历服务端
 
 - [初次环境设置](https://blog.csdn.net/m0_67393413/article/details/126100779)
