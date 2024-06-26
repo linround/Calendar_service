@@ -29,6 +29,12 @@ If you use this project for commercial purposes, please abide by the GPL-3.0 agr
 
 # 项目文件地址
 /usr/linyuan/calendarServer
+- 安装依赖
+  - `go mod tidy`
+- 编译
+  - `go build -o /ucalendarService/main main.go`
+- 后台运行
+  - `nohup main &`
 
 # 日历服务端
 
